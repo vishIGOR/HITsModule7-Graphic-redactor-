@@ -1,0 +1,1 @@
+# HITsModule7-Graphic-redactor-
