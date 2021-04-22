@@ -1,2 +1,2 @@
-# HITsModule7-Graphic-redactor-
+# HITsModule7Graphicredactor
 Учебный проект по созданию графического редактора на платформе Android
