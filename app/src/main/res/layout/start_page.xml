@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/start_page">
+    <View
+            android:id="@+id/rectangle_2"
+            android:layout_width="300dp"
+            android:layout_height="77dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/title_rectangle" android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.139"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:id="@+id/i_s_o_p_h_o"
+            android:layout_width="219dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="false"
+            android:text="@string/i_s_o_p_h_o"
+            android:textAppearance="@style/i_s_o_p_h_o"
+            android:gravity="top"
+            android:layout_alignStart="@+id/rectangle_2"
+            android:layout_alignEnd="@+id/rectangle_2"
+            android:layout_alignBottom="@+id/rectangle_2"
+            android:layout_alignTop="@+id/rectangle_2"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_2"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
+            app:layout_constraintStart_toStartOf="@+id/rectangle_2"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_2" app:layout_constraintHorizontal_bias="0.827"
+            app:layout_constraintVertical_bias="0.547"/>
+    <View
+            android:id="@+id/rectangle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/logo" android:layout_alignParentBottom="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.81"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.127"/>
+    <TextView
+            android:id="@+id/dt"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_alignParentLeft="true"
+            android:text="@string/dt"
+            android:textAppearance="@style/dt"
+            android:gravity="top"
+            android:layout_alignTop="@+id/rectangle"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle" app:layout_constraintStart_toStartOf="@+id/rectangle"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle" app:layout_constraintTop_toTopOf="@+id/rectangle"/>
+    <Button
+            android:id="@+id/press_start_button"
+            android:text="@string/start"
+            android:textAppearance="@style/start"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/start_button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="startWorking"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.808" app:strokeColor="#FFFCFC" app:strokeWidth="5dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.81"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

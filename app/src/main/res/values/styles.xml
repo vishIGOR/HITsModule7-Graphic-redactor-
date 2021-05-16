@@ -1,0 +1,64 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#F5F7FA</item>
+        <item name="colorPrimaryDark">#F5F7FA</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="i_s_o_p_h_o">
+
+        <item name="android:textSize">
+            24sp
+        </item>
+        <item name="android:textAlignment">
+            center
+        </item>
+        <item name="fontFamily">
+            Roboto
+        </item>
+        <item name="android:textColor">
+            #F5F7FA
+        </item>
+
+    </style>
+    <style name="dt">
+
+        <item name="android:textSize">
+            24sp
+        </item>
+        <item name="fontFamily">
+            Roboto
+        </item>
+        <item name="android:textColor">
+            #7A57D1
+        </item>
+
+    </style>
+    <style name="start">
+
+        <item name="android:textSize">
+            24sp
+        </item>
+        <item name="fontFamily">
+            Roboto
+        </item>
+        <item name="android:textColor">
+            #F5F7FA
+        </item>
+
+    </style>
+    <style name="select_photo">
+
+        <item name="android:textSize">
+            26sp
+        </item>
+        <item name="fontFamily">
+            Roboto
+        </item>
+        <item name="android:textColor">
+            #F5F7FA
+        </item>
+
+    </style>
+</resources>
