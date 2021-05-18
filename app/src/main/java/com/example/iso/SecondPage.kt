@@ -1,7 +1,6 @@
 package com.example.iso
 
 import android.Manifest
-import android.R.attr
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,8 +10,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.select_image_page.*
-import android.R.attr.data
-import android.net.Uri
 
 
 class SecondPage : AppCompatActivity() {
@@ -25,7 +22,7 @@ class SecondPage : AppCompatActivity() {
             startActivity(toFirst)
         }
 
-        val backToFirst = findViewById<View>(R.id.imageButton3)
+        val backToFirst = findViewById<View>(R.id.backToStartPage)
         backToFirst.setOnClickListener(View.OnClickListener { toFirstPage() })
 
         imageFromGalleryButton.setOnClickListener {

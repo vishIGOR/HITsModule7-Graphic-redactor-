@@ -7,7 +7,7 @@
         android:background="@drawable/select_image_page">
 
     <View
-            android:id="@+id/rectangle_1"
+            android:id="@+id/topOfImageSelectionPage"
             android:layout_width="match_parent"
             android:layout_height="89dp"
             android:background="@drawable/select_image_rectangle"
@@ -16,16 +16,18 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
     <TextView
-            android:id="@+id/select_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/selectPhoto"
+            android:layout_width="190dp"
+            android:layout_height="31dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:text="@string/select_photo"
             android:textAppearance="@style/select_photo"
             android:gravity="top"
-            android:layout_alignBottom="@+id/rectangle_1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_1" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_1"/>
+            app:layout_constraintTop_toTopOf="@+id/topOfImageSelectionPage"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfImageSelectionPage"
+            app:layout_constraintEnd_toEndOf="@+id/topOfImageSelectionPage"
+            app:layout_constraintStart_toStartOf="@+id/topOfImageSelectionPage"/>
     <ImageButton
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -34,36 +36,36 @@
             android:background="@drawable/gallery_and_camera_button"
             android:id="@+id/imageFromGalleryButton"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/rectangle_1"
             android:layout_alignParentEnd="true"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_1"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton2" app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintVertical_bias="0.62"/>
+            app:layout_constraintTop_toBottomOf="@+id/topOfImageSelectionPage"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.203"/>
     <ImageButton
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentLeft="true"
             app:srcCompat="@drawable/ic_camera"
             android:background="@drawable/gallery_and_camera_button"
-            android:id="@+id/imageButton2" android:layout_alignParentEnd="true"
+            android:id="@+id/imageFromCameraButton" android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_1" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.672"/>
+            app:layout_constraintTop_toBottomOf="@+id/topOfImageSelectionPage"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.636"/>
     <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:background="@drawable/return_button_for_second_page"
             app:srcCompat="@drawable/ic_return_for_second_page"
-            android:id="@+id/imageButton3"
+            android:id="@+id/backToStartPage"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:onClick="returnToStartPage"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_1"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.13"
-            app:layout_constraintVertical_bias="0.917"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="80dp"
+            app:layout_constraintTop_toBottomOf="@+id/topOfImageSelectionPage"
+            app:layout_constraintVertical_bias="1.0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

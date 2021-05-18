@@ -15,7 +15,7 @@ class MainPage : AppCompatActivity() {
             startActivity(toSecond)
         }
 
-        val startWorking = findViewById<View>(R.id.press_start_button)
+        val startWorking = findViewById<View>(R.id.startButton)
         startWorking.setOnClickListener(View.OnClickListener { toSecondPage() })
     }
 }

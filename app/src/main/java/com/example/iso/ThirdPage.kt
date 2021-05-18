@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
-import com.dingmouren.layoutmanagergroup.skidright.SkidRightLayoutManager
 import kotlinx.android.synthetic.main.choice_of_algo_page.*
 
 
@@ -33,6 +31,6 @@ class ThirdPage : AppCompatActivity() {
 
         val extras = intent.extras
         val myUri = Uri.parse(extras!!.getString("imageUri"))
-        imageView.setImageURI(myUri)
+        placeForImageSelectionPage.setImageURI(myUri)
     }
 }
