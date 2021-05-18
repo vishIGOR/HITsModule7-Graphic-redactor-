@@ -35,7 +35,7 @@
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_cancel"
+            app:srcCompat="@drawable/cancel"
             android:id="@+id/returnToSecondPageButton"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +53,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
             app:layout_constraintStart_toStartOf="@+id/topOfTheAlgorithmSelectionPage"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.929"
-            app:layout_constraintVertical_bias="0.509"/>
+            app:layout_constraintHorizontal_bias="0.903"
+    />
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             app:layout_constraintEnd_toStartOf="@+id/endWorkingWithImageButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
-            app:layout_constraintStart_toEndOf="@+id/undoChanges"/>
+            app:layout_constraintStart_toEndOf="@+id/undoChanges" app:layout_constraintHorizontal_bias="0.0"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:background="@android:color/transparent"
@@ -74,7 +74,8 @@
             app:layout_constraintStart_toEndOf="@+id/returnToSecondPageButton"
             app:layout_constraintBottom_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/endWorkingWithImageButton"/>
+            app:layout_constraintEnd_toStartOf="@+id/endWorkingWithImageButton"
+            app:layout_constraintHorizontal_bias="0.534"/>
     <ImageView
             android:layout_width="369dp"
             android:layout_height="441dp"
@@ -92,4 +93,25 @@
             app:layout_constraintTop_toTopOf="@+id/topOfImageSelectionPage" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/topOfImageSelectionPage"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_cube" android:id="@+id/cubeButton"
+            tools:layout_editor_absoluteY="636dp" tools:layout_editor_absoluteX="21dp"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_filters" android:id="@+id/filtersButton"
+            tools:layout_editor_absoluteY="636dp" tools:layout_editor_absoluteX="224dp"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_mask" android:id="@+id/maskingButton"
+            tools:layout_editor_absoluteY="636dp" tools:layout_editor_absoluteX="317dp"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_rotation"
+            android:id="@+id/imageRotationButton" tools:layout_editor_absoluteY="636dp"
+            tools:layout_editor_absoluteX="127dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

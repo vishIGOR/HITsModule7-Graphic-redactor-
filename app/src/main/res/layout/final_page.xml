@@ -44,10 +44,9 @@
             android:layout_alignParentTop="true"
             android:background="@drawable/for_save_page_4"
             app:layout_constraintTop_toTopOf="@+id/fieldForTeamStuff"
-            app:layout_constraintBottom_toBottomOf="@+id/fieldForTeamStuff"
             app:layout_constraintEnd_toEndOf="@+id/fieldForTeamStuff"
-            app:layout_constraintStart_toStartOf="@+id/fieldForTeamStuff" app:layout_constraintHorizontal_bias="0.771"
-            app:layout_constraintVertical_bias="0.529"/>
+            app:layout_constraintStart_toStartOf="@+id/fieldForTeamStuff" app:layout_constraintHorizontal_bias="0.829"
+            app:layout_constraintBottom_toBottomOf="@+id/fieldForTeamStuff"/>
     <TextView
             android:id="@+id/saveOrShare"
             android:layout_width="180dp"
