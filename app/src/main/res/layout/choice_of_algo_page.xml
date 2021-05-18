@@ -83,7 +83,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/fieldForSaveAndShareButtons"
-            app:layout_constraintTop_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"/>
+            app:layout_constraintTop_toBottomOf="@+id/topOfTheAlgorithmSelectionPage" android:layout_marginTop="40dp"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="410dp"
             android:id="@+id/buttons"
