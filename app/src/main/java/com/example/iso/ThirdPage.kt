@@ -23,6 +23,14 @@ class ThirdPage : AppCompatActivity() {
         val thirdPageToSecond = findViewById<View>(R.id.returnToSecondPageButton)
         thirdPageToSecond.setOnClickListener(View.OnClickListener { fromThirdToSecond() })
 
+        fun fromThirdToFinal() {
+            val thirdToFinal = Intent(this@ThirdPage, FinalPage::class.java)
+            startActivity(thirdToFinal)
+        }
+
+        val thirdPageToFinal = findViewById<View>(R.id.endWorkingWithImageButton)
+        thirdPageToFinal.setOnClickListener(View.OnClickListener { fromThirdToFinal() })
+
         val extras = intent.extras
         val myUri = Uri.parse(extras!!.getString("imageUri"))
         imageView.setImageURI(myUri)

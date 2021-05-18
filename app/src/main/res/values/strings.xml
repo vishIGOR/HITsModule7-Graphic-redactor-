@@ -17,9 +17,20 @@
         SELECT PHOTO
     </string>
     <string name="title_activity_second_page">SecondPage</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+    <string name="save_or_sha">
+
+        SAVE OR SHARE
+    </string>
+    <string name="support_us">
+
+        SUPPORT US
+    </string>
+    <string name="igor_vishne">
+
+        Igor Vishnevskii\nNadya Zyatikova\nKseniya Lukina
+    </string>
+    <string name="dreamteam">
+
+        DREAMTEAM
+    </string>
 </resources>
