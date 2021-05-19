@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.content.Intent
 import android.view.View
 import kotlinx.android.synthetic.main.choice_of_algo_page.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 
 
 class ThirdPage : AppCompatActivity() {
@@ -32,5 +34,25 @@ class ThirdPage : AppCompatActivity() {
         val extras = intent.extras
         val myUri = Uri.parse(extras!!.getString("imageUri"))
         placeForImageSelectionPage.setImageURI(myUri)
+
+        fun fromThirdToCube() {
+            val yoursFragment: Fragment = Cube()
+            val trans: FragmentTransaction = supportFragmentManager.beginTransaction()
+            trans.add(R.id.fragments, yoursFragment)
+            trans.commit()
+        }
+
+        val thirdPageToCube = findViewById<View>(R.id.cubeButton)
+        thirdPageToCube.setOnClickListener(View.OnClickListener { fromThirdToCube() })
+
+        fun fromThirdToRotation() {
+            val rotationFragment: Fragment = ImageRotation()
+            val transForRotation: FragmentTransaction = supportFragmentManager.beginTransaction()
+            transForRotation.add(R.id.fragments, rotationFragment)
+            transForRotation.commit()
+        }
+
+        val thirdPageToRotation = findViewById<View>(R.id.imageRotationButton)
+        thirdPageToRotation.setOnClickListener(View.OnClickListener { fromThirdToRotation() })
     }
 }
