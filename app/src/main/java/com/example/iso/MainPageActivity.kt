@@ -6,17 +6,17 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.start_page.*
 
-class MainPage : AppCompatActivity() {
+class MainPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_page)
         fun toSecondPage() {
-            val toSecond = Intent(this@MainPage, SecondPage::class.java)
+            val toSecond = Intent(this@MainPageActivity, SecondPageActivity::class.java)
             startActivity(toSecond)
         }
 
         val startWorking = findViewById<View>(R.id.startButton)
-        startWorking.setOnClickListener(View.OnClickListener { toSecondPage() })
+        startWorking.setOnClickListener { toSecondPage() }
     }
 }
 

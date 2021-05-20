@@ -11,17 +11,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".WorkingPage">
+        </activity>
         <activity android:name=".AlgoWorkingPage">
         </activity>
-        <activity android:name=".FinalPage">
+        <activity android:name=".FinalPageActivity">
         </activity>
-        <activity android:name=".ThirdPage">
+        <activity android:name=".ThirdPageActivity">
         </activity>
         <activity
-                android:name=".SecondPage"
+                android:name=".SecondPageActivity"
                 android:label="@string/title_activity_second_page">
         </activity>
-        <activity android:name=".MainPage">
+        <activity android:name=".MainPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
