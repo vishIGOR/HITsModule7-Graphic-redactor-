@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.content.Intent
 import android.graphics.Bitmap
 import android.provider.MediaStore
+import androidx.annotation.IdRes
 import com.example.iso.databinding.ChoiceOfAlgoPageBinding
 import kotlinx.android.synthetic.main.choice_of_algo_page.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import java.io.IOException
 import by.kirich1409.viewbindingdelegate.viewBinding
 
@@ -17,6 +19,7 @@ class ThirdPageActivity : AppCompatActivity() {
 
     private val viewBinding by viewBinding(ChoiceOfAlgoPageBinding::bind, R.id.constL)
     lateinit var myUri: Uri
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.choice_of_algo_page)
@@ -39,22 +42,9 @@ class ThirdPageActivity : AppCompatActivity() {
 
         viewBinding.endWorkingWithImageButton.setOnClickListener { fromThirdToFinal() }
 
-        fun fromThirdToCube() {
-            val cubeFragment: Fragment = CubeFragment()
-            val trans: FragmentTransaction = supportFragmentManager.beginTransaction()
-            trans.replace(R.id.fragments, cubeFragment)
-            trans.commit()
-        }
-
-        viewBinding.cubeButton.setOnClickListener { fromThirdToCube() }
-
         fun fromThirdToRotation() {
-            val rotationFragment: Fragment = ImageRotationFragment()
-            val transForRotation: FragmentTransaction = supportFragmentManager.beginTransaction()
-            transForRotation.replace(R.id.fragments, rotationFragment)
-            transForRotation.commit()
+            NavigationItemsRouter(R.id.fragments, supportFragmentManager)
         }
-
         viewBinding.imageRotationButton.setOnClickListener { fromThirdToRotation() }
     }
 
@@ -66,5 +56,54 @@ class ThirdPageActivity : AppCompatActivity() {
             e.printStackTrace()
         }
         return bitmapPicture
+    }
+
+    class NavigationItemsRouter(
+        @IdRes private val containerId: Int,
+        private val fm: FragmentManager
+    ) {
+        fun selectItem(
+            screenTag: String,
+            screenCreator: () -> Fragment
+        ) {
+            val activeFragment = findActiveFragment()
+            val targetFragment = fm.findFragmentByTag(screenTag)
+
+            if (isSame(activeFragment, targetFragment))
+                return
+
+            fm.beginTransaction().run {
+                if (activeFragment != null) {
+                    hide(activeFragment)
+                    // pause fragment
+                    setMaxLifecycle(activeFragment, Lifecycle.State.STARTED)
+                }
+
+                if (targetFragment == null) {
+                    add(containerId, screenCreator(), screenTag)
+                } else {
+                    // allow resume
+                    setMaxLifecycle(targetFragment, Lifecycle.State.RESUMED)
+                    show(targetFragment)
+                }
+
+                commitAllowingStateLoss()
+            }
+        }
+
+        /**
+         * @return First visible [Fragment].
+         */
+        private fun findActiveFragment(): Fragment? {
+            fm.fragments.forEach {
+                if (it.isVisible)
+                    return it
+            }
+
+            return null
+        }
+
+        private fun isSame(active: Fragment?, target: Fragment?): Boolean =
+            active != null && target != null && active == target
     }
 }

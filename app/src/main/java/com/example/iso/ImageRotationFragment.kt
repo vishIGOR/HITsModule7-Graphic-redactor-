@@ -9,6 +9,11 @@ import android.widget.ImageView
 
 class ImageRotationFragment : Fragment(R.layout.fragment_image_rotation) {
     private lateinit var photoPlace: ImageView
+
+    companion object {
+        val screenTag: String = ImageRotationFragment::class.java.simpleName
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
