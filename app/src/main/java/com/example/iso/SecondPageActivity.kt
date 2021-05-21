@@ -2,24 +2,19 @@ package com.example.iso
 
 import android.Manifest
 import android.app.Activity
-import android.app.Instrumentation
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore.ACTION_IMAGE_CAPTURE
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.select_image_page.*
-import android.provider.MediaStore
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.android.synthetic.main.choice_of_algo_page.*
-
 
 class SecondPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,8 +76,8 @@ class SecondPageActivity : AppCompatActivity() {
     }
 
     companion object {
-        val IMAGE_PICK_CODE = 1000;
-        private val PERMISSION_CODE = 1001;
+        const val IMAGE_PICK_CODE = 1000;
+        private const val PERMISSION_CODE = 1001;
     }
 
     private val startForProfileImageResult =

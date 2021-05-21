@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/choice_of_algori_page">
@@ -30,5 +30,54 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintVertical_bias="1.0" app:layout_constraintTop_toBottomOf="@+id/topOfTheMaskingPage"/>
+    <EditText
+            android:text=""
+            android:layout_width="89dp"
+            android:layout_height="47dp" android:id="@+id/radius"
+            android:inputType="numberSigned"
+            android:ems="8"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468" app:layout_constraintVertical_bias="0.13"/>
+    <EditText
+            android:text=""
+            android:layout_width="95dp"
+            android:layout_height="46dp" android:id="@+id/effect"
+            android:inputType="numberSigned"
+            android:ems="8"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.153" app:layout_constraintVertical_bias="0.142"/>
+    <EditText
+            android:text=""
+            android:layout_width="93dp"
+            android:layout_height="46dp" android:id="@+id/threshold"
+            android:inputType="numberSigned"
+            android:ems="8"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.152" app:layout_constraintVertical_bias="0.811"/>
+    <ImageView
+            android:src="@android:drawable/screen_background_light_transparent"
+            android:layout_width="370dp"
+            android:layout_height="456dp" android:id="@+id/placeForImageMasking"
+            app:layout_constraintTop_toBottomOf="@+id/topOfTheMaskingPage"
+            app:layout_constraintBottom_toTopOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_ok"
+            android:id="@+id/startMaskingButton"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfMaskingPage"
+            app:layout_constraintHorizontal_bias="0.765" app:layout_constraintVertical_bias="0.66"
+            tools:layout_editor_absoluteY="644dp" tools:layout_editor_absoluteX="273dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
