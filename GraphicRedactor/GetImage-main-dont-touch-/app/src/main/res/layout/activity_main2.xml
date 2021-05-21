@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity2"
+        tools:ignore="HardcodedText">
+
+    <!--Button to open the image selector-->
+    <Button
+            android:id="@+id/bSelectImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="SELECT IMAGE"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    <!--ImageView to preview the selected image-->
+    <ImageView
+            android:id="@+id/iVPreviewImage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/bSelectImage"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="TODO"
+            tools:ignore="ContentDescription"/>
+
+    <Button
+            android:id="@+id/bGaussBlur"
+            android:text="Размытие"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iVPreviewImage"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+    <Button
+            android:id="@+id/bNegative"
+            android:text="Негатив"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/bGaussBlur"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+    <Button
+            android:id="@+id/bPixelGraphic"
+            android:text="Пиксельная графика"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/bNegative"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+    <Button
+            android:id="@+id/bGammaChanging"
+            android:text="Изменение гаммы"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/bPixelGraphic"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+</RelativeLayout>
