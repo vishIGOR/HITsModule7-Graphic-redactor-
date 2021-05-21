@@ -264,17 +264,48 @@ class MainActivity : AppCompatActivity() {
                     1 / (sigma * sigma * 2 * PI) * (E.pow(-1 * ((i * i + j * j) / (2 * sigma * sigma))))
             }
         }
-        for (i in 0 until imageWidth * imageHeight) {
+        for (k in 0 until imageWidth * imageHeight) {
 
-            pixelX = i % imageWidth
-            pixelY = i / imageWidth
+            pixelX = k % imageWidth
+            pixelY = k / imageWidth
             currentPixel.updateValues()
-
             for (i in -1 * doubleSigma..doubleSigma) {
                 for (j in -1 * doubleSigma..doubleSigma) {
-                    if (pixelX + i in 0 until imageWidth && pixelY + j in 0 until imageHeight) {
 
-                        coef = coefficients[i + doubleSigma][j + doubleSigma]
+                    coef = coefficients[i + doubleSigma][j + doubleSigma]
+                    if (pixelX+i >=imageWidth || pixelX+i<0){
+                        if(pixelY+j>=imageHeight || pixelY+j<0){
+                            currentPixel.addColor(
+                                coef,
+                                oldPixels[returnNumberFromCoordinates(
+                                    imageWidth,
+                                    pixelX + i-doubleSigma*(sign(i.toDouble()).toInt()),
+                                    pixelY + j-doubleSigma*(sign(j.toDouble()).toInt())
+                                )]
+                            )
+                        }else{
+
+                            currentPixel.addColor(
+                                coef,
+                                oldPixels[returnNumberFromCoordinates(
+                                    imageWidth,
+                                    pixelX + i-doubleSigma*(sign(i.toDouble()).toInt()),
+                                    pixelY + j
+                                )]
+                            )
+                        }
+                        continue
+                    }
+                    if(pixelY+j>=imageHeight || pixelY+j<0){
+                        currentPixel.addColor(
+                            coef,
+                            oldPixels[returnNumberFromCoordinates(
+                                imageWidth,
+                                pixelX,
+                                pixelY + j-doubleSigma*(sign(j.toDouble()).toInt())
+                            )]
+                        )
+                    }else{
                         currentPixel.addColor(
                             coef,
                             oldPixels[returnNumberFromCoordinates(
@@ -285,8 +316,9 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
                 }
+
             }
-            newPixels[i] = currentPixel.returnFinishValue()
+            newPixels[k] = currentPixel.returnFinishValue()
 
         }
 
@@ -420,37 +452,6 @@ class MainActivity : AppCompatActivity() {
                     doubleX+=grad
                 }
             }
-//
-//            var changeFlag = false
-//            if (dy > dx) {
-//                var tempVar = dx
-//                dx = dy
-//                dy = tempVar
-//                changeFlag = true
-//            }
-//
-//            var e = 2 * dy - dx
-//
-//            for (i in 1..dx) {
-//                imagePixels[y * imageSize + x] =
-//                    argb(255, 0, 0, 0)
-//                if (e >= 0) {
-//                    if (changeFlag) {
-//                        x += signX
-//                    } else {
-//                        y += signY
-//                    }
-//                    e -= 2 * dx
-//                }
-//                if (changeFlag) {
-//                    y += signY
-//                } else {
-//                    x += signX
-//                }
-//                e += 2 * dy
-//            }
-//            imagePixels[y * imageSize + x] =
-//                argb(255, 0, 0, 0)
         }
 
         class Facet(
@@ -467,6 +468,9 @@ class MainActivity : AppCompatActivity() {
             var number = 0
 
             fun paintRow(color:Int,direction:Int,bx:Int,by:Int,borderPoint: Point){
+                if(by<3 || by>=imageSize-3){
+                    return
+                }
                 var deltaX=bx
                 val blankColor = 0
                 var signX = 1
@@ -494,7 +498,9 @@ class MainActivity : AppCompatActivity() {
                     while(imagePixels[by*imageSize+deltaX]==blankColor){
                         imagePixels[by*imageSize+deltaX]=color
                         deltaX+=signX
-                        if (deltaX< 0 || deltaX > imageSize){
+                        if((signX == 1 && deltaX>topRightP.x && deltaX>topLeftP.x && deltaX>bottomRightP.x && deltaX>bottomLeftP.x)
+                            || (signX == -1 && deltaX<topRightP.x && deltaX<topLeftP.x && deltaX<bottomRightP.x && deltaX<bottomLeftP.x)
+                            || (deltaX<0 || deltaX >= imageSize) || (deltaX+signX+by*imageSize<0 || deltaX+signX+by*imageSize>=imageSize*imageSize)){
                             for(i in 0..abs(deltaX-tempBX)){
                                 imagePixels[by*imageSize+tempBX+i*signX]=argb(0,0,0,0)
                             }
@@ -507,12 +513,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 deltaX=bx+1
                 imagePixels[by*imageSize+bx]=color
-                while(imagePixels[by*imageSize+deltaX]==blankColor){
+                while(imagePixels[by*imageSize+deltaX]==blankColor&& by*imageSize+deltaX in 1..imageSize*imageSize-2){
                     imagePixels[by*imageSize+deltaX]=color
                     deltaX++
                 }
                 deltaX=bx-1
-                while(imagePixels[by*imageSize+deltaX]==blankColor){
+                while(imagePixels[by*imageSize+deltaX]==blankColor && by*imageSize+deltaX in 1..imageSize*imageSize-2){
                     imagePixels[by*imageSize+deltaX]=color
                     deltaX--
                 }
@@ -601,7 +607,7 @@ class MainActivity : AppCompatActivity() {
             fun drawNumber(){
                 val widthOfDigit = 0.24
                 val margin = 0.20
-                val interdigitalSpace = 0.08
+                val interdigitalSpace = 0.06
 
                 if(number == 1){
                     drawDigitOne(indentFromPoint((1-widthOfDigit)/2,indentFromPoint(margin,topLeftP,bottomLeftP),indentFromPoint(margin,topRightP,bottomRightP)),

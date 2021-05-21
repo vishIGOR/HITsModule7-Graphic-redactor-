@@ -139,7 +139,7 @@ class MainActivity2 : AppCompatActivity() {
         var pixelX = 0
         var pixelY = 0
 
-        var sigma = 1.5
+        var sigma = 2.0
         var doubleSigma: Int = 2 * (sigma.roundToInt())
         val coefficients = Array(2 * doubleSigma + 1) { Array(2 * doubleSigma + 1) { 0.0 } }
         for (i in -1 * doubleSigma..doubleSigma) {
@@ -148,29 +148,61 @@ class MainActivity2 : AppCompatActivity() {
                     1 / (sigma * sigma * 2 * PI) * (E.pow(-1 * ((i * i + j * j) / (2 * sigma * sigma))))
             }
         }
-        for (i in 0 until imageWidth * imageHeight) {
+        for (k in 0 until imageWidth * imageHeight) {
 
-            pixelX = i % imageWidth
-            pixelY = i / imageWidth
+            pixelX = k % imageWidth
+            pixelY = k / imageWidth
             currentPixel.updateValues()
-
             for (i in -1 * doubleSigma..doubleSigma) {
                 for (j in -1 * doubleSigma..doubleSigma) {
-                    if (pixelX + i in 0 until imageWidth && pixelY + j in 0 until imageHeight) {
 
                         coef = coefficients[i + doubleSigma][j + doubleSigma]
-                        currentPixel.addColor(
-                            coef,
-                            oldPixels[returnNumberFromCoordinates(
-                                imageWidth,
-                                pixelX + i,
-                                pixelY + j
-                            )]
-                        )
+                        if (pixelX+i >=imageWidth || pixelX+i<0){
+                            if(pixelY+j>=imageHeight || pixelY+j<0){
+                                currentPixel.addColor(
+                                    coef,
+                                    oldPixels[returnNumberFromCoordinates(
+                                        imageWidth,
+                                        pixelX + i-doubleSigma*(sign(i.toDouble()).toInt()),
+                                        pixelY + j-doubleSigma*(sign(j.toDouble()).toInt())
+                                    )]
+                                )
+                            }else{
+
+                                currentPixel.addColor(
+                                    coef,
+                                    oldPixels[returnNumberFromCoordinates(
+                                        imageWidth,
+                                        pixelX + i-doubleSigma*(sign(i.toDouble()).toInt()),
+                                        pixelY + j
+                                    )]
+                                )
+                            }
+                            continue
+                        }
+                        if(pixelY+j>=imageHeight || pixelY+j<0){
+                            currentPixel.addColor(
+                                coef,
+                                oldPixels[returnNumberFromCoordinates(
+                                    imageWidth,
+                                    pixelX,
+                                    pixelY + j-doubleSigma*(sign(j.toDouble()).toInt())
+                                )]
+                            )
+                        }else{
+                            currentPixel.addColor(
+                                coef,
+                                oldPixels[returnNumberFromCoordinates(
+                                    imageWidth,
+                                    pixelX + i,
+                                    pixelY + j
+                                )]
+                            )
+                        }
                     }
-                }
+
             }
-            newPixels[i] = currentPixel.returnFinishValue()
+            newPixels[k] = currentPixel.returnFinishValue()
 
         }
         newImage.setPixels(newPixels, 0, imageWidth, 0, 0, imageWidth, imageHeight)
