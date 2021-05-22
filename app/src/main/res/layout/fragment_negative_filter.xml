@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/choice_of_algori_page">
+    <View
+            android:id="@+id/topOfTheCubePage"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/select_image_rectangle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"/>
+    <View
+            android:id="@+id/bottomOfCubePage"
+            android:layout_width="match_parent"
+            android:layout_height="116dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/rectangle_for_third_page"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintTop_toBottomOf="@+id/topOfTheCubePage"/>
+    <ImageView
+            android:src="@android:drawable/screen_background_light_transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/placeForN"
+            app:layout_constraintTop_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintBottom_toTopOf="@+id/bottomOfCubePage"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_ok_for_algos"
+            android:id="@+id/doingSomethingWithNegative"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="@+id/bottomOfCubePage"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfCubePage"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfCubePage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfCubePage"
+            app:layout_constraintHorizontal_bias="0.47" app:layout_constraintVertical_bias="0.482"
+    />
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cancel"
+            android:id="@+id/returnToSecondPageButtonN"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintTop_toTopOf="@+id/topOfTheCubePage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_ok"
+            android:id="@+id/endWorkingWithImageButtonN"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintStart_toStartOf="@+id/topOfTheCubePage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.903"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
