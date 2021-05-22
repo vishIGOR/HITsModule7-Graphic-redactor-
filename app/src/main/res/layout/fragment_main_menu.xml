@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-             tools:context=".MainMenuFragment"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   tools:context=".MainMenuFragment"
                                                    android:id="@+id/constAhah">
 
     <View
             android:id="@+id/topOfTheAlgorithmSelectionPage"
-            android:layout_width="411dp"
+            android:layout_width="wrap_content"
             android:layout_height="102dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -21,8 +22,8 @@
             app:layout_constraintVertical_bias="0.0"/>
     <View
             android:id="@+id/bottomOfImageSelectionPage"
-            android:layout_width="418dp"
-            android:layout_height="116dp"
+            android:layout_width="match_parent"
+            android:layout_height="126dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/rectangle_for_third_page"
@@ -30,7 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="1.0"/>
     <ImageButton
             android:layout_width="wrap_content"
@@ -42,71 +43,27 @@
             app:layout_constraintBottom_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
             app:layout_constraintTop_toTopOf="@+id/topOfTheAlgorithmSelectionPage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.059" android:contentDescription="TODO"/>
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:background="@android:color/transparent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_ok"
-            android:id="@+id/endWorkingWithImageButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
-            app:layout_constraintStart_toStartOf="@+id/topOfTheAlgorithmSelectionPage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.903"
-    />
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_redo"
-            android:background="@android:color/transparent"
-            android:id="@+id/redoChanges"
-            app:layout_constraintEnd_toStartOf="@+id/endWorkingWithImageButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
-            app:layout_constraintStart_toEndOf="@+id/undoChanges" app:layout_constraintHorizontal_bias="0.0"/>
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:background="@android:color/transparent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_undo"
-            android:id="@+id/undoChanges"
-            app:layout_constraintStart_toEndOf="@+id/returnToSecondPageButton"
-            app:layout_constraintBottom_toBottomOf="@+id/topOfTheAlgorithmSelectionPage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/endWorkingWithImageButton"
-            app:layout_constraintHorizontal_bias="0.534"/>
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="410dp"
-            android:id="@+id/buttons"
-            android:orientation="horizontal"
-            android:layout_height="112dp"
-            app:layout_constraintTop_toTopOf="@+id/bottomOfImageSelectionPage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomOfImageSelectionPage"
-            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintHorizontal_bias="0.05" android:contentDescription="TODO"/>
     <ImageButton
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_cube" android:id="@+id/cubeButton"
-            app:layout_constraintTop_toTopOf="@+id/bottomOfImageSelectionPage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/bottomOfImageSelectionPage"
-            app:layout_constraintEnd_toStartOf="@+id/imageRotationButton"
-            app:layout_constraintHorizontal_bias="0.819"/>
+            app:layout_constraintTop_toTopOf="@+id/bottomOfImageSelectionPage"
+            app:layout_constraintEnd_toStartOf="@+id/imageRotationButton" app:layout_constraintHorizontal_bias="0.81"/>
     <ImageButton
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_filters"
             android:id="@+id/filtersButton"
             app:layout_constraintTop_toTopOf="@+id/bottomOfImageSelectionPage"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/bottomOfImageSelectionPage"
-            app:layout_constraintHorizontal_bias="0.618"/>
+            app:layout_constraintEnd_toStartOf="@+id/maskingButton" app:layout_constraintHorizontal_bias="0.961"/>
     <ImageView
-            android:layout_width="369dp"
-            android:layout_height="441dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/screen_background_light_transparent"
             android:id="@+id/placeForImageSelectionPage"
             app:layout_constraintBottom_toTopOf="@+id/bottomOfImageSelectionPage"
@@ -117,16 +74,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_mask" android:id="@+id/maskingButton"
             app:layout_constraintStart_toStartOf="@+id/bottomOfImageSelectionPage"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@+id/buttons"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.861"
-            app:layout_constraintVertical_bias="0.461"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfImageSelectionPage"/>
     <ImageButton
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_rotation"
             android:id="@+id/imageRotationButton"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/bottomOfImageSelectionPage"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.339"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/scaleButton"
+            app:layout_constraintHorizontal_bias="0.921"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scaleButton"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfImageSelectionPage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfImageSelectionPage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/filtersButton" app:layout_constraintHorizontal_bias="0.935"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

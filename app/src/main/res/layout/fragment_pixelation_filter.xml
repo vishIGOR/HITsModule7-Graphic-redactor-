@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/choice_of_algori_page">
     <View
-            android:id="@+id/topOfTheScalePage"
+            android:id="@+id/topOfTheCubePage"
             android:layout_width="match_parent"
             android:layout_height="102dp"
             android:layout_alignParentStart="true"
@@ -19,7 +19,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="0.0"/>
     <View
-            android:id="@+id/bottomOfScalePage"
+            android:id="@+id/bottomOfCubePage"
             android:layout_width="match_parent"
             android:layout_height="116dp"
             android:layout_alignParentStart="true"
@@ -30,60 +30,58 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintTop_toBottomOf="@+id/topOfTheScalePage"/>
-
-    <EditText
-            android:text=""
-            android:layout_width="151dp"
-            android:layout_height="60dp"
-            android:id="@+id/coefficient"
-            android:inputType="numberSigned|numberDecimal"
-            android:ems="8"
-            app:layout_constraintTop_toTopOf="@+id/bottomOfScalePage"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomOfScalePage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.482"
-            app:layout_constraintHorizontal_bias="0.234"
-            app:layout_constraintStart_toStartOf="@+id/bottomOfScalePage"/>
+            app:layout_constraintTop_toBottomOf="@+id/topOfTheCubePage"/>
     <ImageView
             android:src="@android:drawable/screen_background_light_transparent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/placeForScale"
-            app:layout_constraintTop_toBottomOf="@+id/topOfTheScalePage"
-            app:layout_constraintBottom_toTopOf="@+id/bottomOfScalePage"
+            android:layout_height="wrap_content" android:id="@+id/placeForPix"
+            app:layout_constraintTop_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintBottom_toTopOf="@+id/bottomOfCubePage"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_ok_for_algos"
-            android:id="@+id/doingSomethingWithScale"
+            android:id="@+id/doingSomethingWithPix"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="@+id/bottomOfScalePage"
-            app:layout_constraintStart_toStartOf="@+id/bottomOfScalePage"
-            app:layout_constraintTop_toTopOf="@+id/bottomOfScalePage"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomOfScalePage"
-            app:layout_constraintHorizontal_bias="0.893" app:layout_constraintVertical_bias="0.482"
+            app:layout_constraintEnd_toEndOf="@+id/bottomOfCubePage"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfCubePage"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfCubePage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfCubePage"
+            app:layout_constraintHorizontal_bias="0.82"
     />
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_cancel"
-            android:id="@+id/returnToSecondPageButtonScale"
+            android:id="@+id/returnToSecondPageButtonPix"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/topOfTheScalePage"
-            app:layout_constraintTop_toTopOf="@+id/topOfTheScalePage"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintTop_toTopOf="@+id/topOfTheCubePage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.05"/>
+    <EditText
+            android:id="@+id/pixels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:inputType="numberSigned"
+            android:ems="8"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfCubePage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfCubePage"
+            app:layout_constraintVertical_bias="0.492" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfCubePage"
+            app:layout_constraintHorizontal_bias="0.225"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:background="@android:color/transparent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_ok"
-            android:id="@+id/endWorkingWithImageButtonScale"
+            android:id="@+id/endWorkingWithImageButtonPix"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/topOfTheScalePage"
-            app:layout_constraintStart_toStartOf="@+id/topOfTheScalePage"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintStart_toStartOf="@+id/topOfTheCubePage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.903"
     />

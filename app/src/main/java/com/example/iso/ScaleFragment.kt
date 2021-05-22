@@ -1,59 +1,103 @@
 package com.example.iso
 
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
+import kotlin.math.roundToInt
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ScaleFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ScaleFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var photoPlace: ImageView
+    var coefficientInput: EditText? = null
+    var startScaleButton: ImageView? = null
+    var saveScaleButton: ImageView? = null
+    var returnButton: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scale, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_scale, container, false)
+        photoPlace = rootView.findViewById(R.id.placeForScale)
+        val photo = (context as ThirdPageActivity).setPicture
+        photoPlace.setImageBitmap(photo)
+
+        coefficientInput = rootView.findViewById(R.id.coefficient)
+        startScaleButton = rootView.findViewById(R.id.doingSomethingWithScale)
+        startScaleButton?.setOnClickListener {
+            lateinit var rotatedPhoto: Bitmap
+            rotatedPhoto = imageScaling()
+            (context as ThirdPageActivity).setPicture = rotatedPhoto
+        }
+
+        saveScaleButton = rootView.findViewById(R.id.endWorkingWithImageButtonScale)
+        saveScaleButton?.setOnClickListener() {
+            returnToMainMenu()
+        }
+
+        returnButton = rootView.findViewById(R.id.returnToSecondPageButtonScale)
+        returnButton?.setOnClickListener{
+            returnToMainMenuTwo()
+        }
+
+        return rootView
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ScaleFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ScaleFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun returnToMainMenu() {
+        val returnFragment: Fragment = MainMenuFragment()
+        val transForMenu: FragmentManager = this.fragmentManager!!
+
+        transForMenu.commit {
+            add(R.id.fragments, returnFragment)
+            setReorderingAllowed(true)
+            addToBackStack("name") // name can be null
+        }
+    }
+
+    private fun returnToMainMenuTwo() {
+        val returnFragment: Fragment = MainMenuFragment()
+        val transForMenu: FragmentManager = this.fragmentManager!!
+
+        transForMenu.commit {
+            replace(R.id.fragments, returnFragment)
+            setReorderingAllowed(true)
+            addToBackStack("name") // name can be null
+        }
+    }
+
+    fun imageScaling(): Bitmap {
+
+        val coefficient = coefficientInput?.text.toString().toFloat()
+        val image = (photoPlace?.drawable as BitmapDrawable).bitmap
+        val oldHeight = image.height
+        val oldWidth = image.width
+
+        val newHeight = (oldHeight * coefficient).roundToInt()
+        val newWidth = (oldWidth * coefficient).roundToInt()
+        var oldX = 0
+        var oldY = 0
+        val newImage = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888)
+
+        for (i in 0 until newWidth) {
+            for (j in 0 until newHeight) {
+                oldX = (i / coefficient).toInt()
+                oldY = (j / coefficient).toInt()
+                var colorOfPixel = image.getPixel(oldX, oldY)
+                newImage.setPixel(i, j, colorOfPixel)
             }
+        }
+        val draw: Drawable = BitmapDrawable(resources, newImage)
+        photoPlace!!.setImageDrawable(draw)
+
+        return newImage
     }
 }

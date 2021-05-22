@@ -129,13 +129,19 @@
         </item>
 
     </style>
-    <style name="vk_com_ivis">
+    <style name="filters">
 
         <item name="android:textSize">
-            14sp
+            18sp
+        </item>
+        <item name="fontFamily">
+            Roboto
         </item>
         <item name="android:textStyle">
             bold
+        </item>
+        <item name="android:textAlignment">
+            center
         </item>
         <item name="android:textColor">
             #7A57D1

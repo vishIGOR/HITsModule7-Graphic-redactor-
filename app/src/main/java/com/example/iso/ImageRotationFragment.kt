@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import kotlinx.android.synthetic.main.fragment_image_rotation.*
 import kotlin.math.PI
 import kotlin.math.roundToInt
@@ -19,22 +21,64 @@ class ImageRotationFragment : Fragment(R.layout.fragment_image_rotation) {
     private lateinit var photoPlace: ImageView
     var rotatingAngle: EditText? = null
     var startRotationButton: ImageView? = null
+    var saveRotationButton: ImageView? = null
+    var returnButton: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_image_rotation, container, false)
+
         rotatingAngle = rootView.findViewById(R.id.angle)
+
         photoPlace = rootView.findViewById(R.id.placeForImageRotation)
-        startRotationButton = rootView.findViewById(R.id.startRotation)
-        startRotationButton?.setOnClickListener { imageRotating() }
-        val photo = (context as ThirdPageActivity).fromUriToBitmap()
+        val photo = (context as ThirdPageActivity).setPicture
         photoPlace.setImageBitmap(photo)
+
+        startRotationButton = rootView.findViewById(R.id.startRotation)
+        startRotationButton?.setOnClickListener {
+            lateinit var pixPhoto: Bitmap
+            pixPhoto = imageRotating()
+            (context as ThirdPageActivity).setPicture = pixPhoto
+        }
+
+        saveRotationButton = rootView.findViewById(R.id.endWorkingWithImageButtonRotation)
+        saveRotationButton?.setOnClickListener() {
+            returnToMainMenu()
+        }
+
+        returnButton = rootView.findViewById(R.id.returnToSecondPageButtonRotation)
+        returnButton?.setOnClickListener{
+            returnToMainMenuTwo()
+        }
+
         return rootView
     }
 
-    fun imageRotating() {
+    private fun returnToMainMenu() {
+        val returnFragment: Fragment = MainMenuFragment()
+        val transForMenu: FragmentManager = this.fragmentManager!!
+
+        transForMenu.commit {
+            add(R.id.fragments, returnFragment)
+            setReorderingAllowed(true)
+            addToBackStack("name") // name can be null
+        }
+    }
+
+    private fun returnToMainMenuTwo() {
+        val returnFragment: Fragment = MainMenuFragment()
+        val transForMenu: FragmentManager = this.fragmentManager!!
+
+        transForMenu.commit {
+            replace(R.id.fragments, returnFragment)
+            setReorderingAllowed(true)
+            addToBackStack("name") // name can be null
+        }
+    }
+
+    fun imageRotating(): Bitmap {
 
         class Point(x: Int, y: Int) {
             var x: Int = x
@@ -124,5 +168,7 @@ class ImageRotationFragment : Fragment(R.layout.fragment_image_rotation) {
 
         val draw: Drawable = BitmapDrawable(resources, newImage)
         placeForImageRotation!!.setImageDrawable(draw)
+
+        return newImage
     }
 }

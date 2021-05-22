@@ -1,35 +1,34 @@
 package com.example.iso
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.iso.databinding.ChoiceOfAlgoPageBinding
-import kotlinx.android.synthetic.main.fragment_main_menu.*
-
 
 class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
 
     var imageRotationButton: ImageView? = null
+    var updateButton: ImageView? = null
     var maskingButton: ImageView? = null
     var cubeButton: ImageView? = null
+    var scaleButton: ImageView? = null
+    var filtersButton: ImageView? = null
+    var endWorkingWithImageButton: ImageView? = null
     private lateinit var photoPlace: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_main_menu, container, false)
-
-        val photo = (context as ThirdPageActivity).fromUriToBitmap()
-        photoPlace = rootView.findViewById(R.id.placeForImageSelectionPage)
-        photoPlace.setImageBitmap(photo)
 
         imageRotationButton = rootView.findViewById(R.id.imageRotationButton)
         imageRotationButton!!.setOnClickListener { goToRotation() }
@@ -39,6 +38,12 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
 
         cubeButton = rootView.findViewById(R.id.cubeButton)
         cubeButton!!.setOnClickListener { goToCube() }
+
+        scaleButton = rootView.findViewById(R.id.scaleButton)
+        scaleButton!!.setOnClickListener { goToScale() }
+
+        filtersButton = rootView.findViewById(R.id.filtersButton)
+        filtersButton!!.setOnClickListener { goToFilters() }
 
         return rootView
     }
@@ -71,6 +76,28 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
 
         transForCube.commit {
             replace(R.id.fragments, cubeFragment)
+            setReorderingAllowed(true)
+            addToBackStack("name") // name can be null
+        }
+    }
+
+    private fun goToScale() {
+        val scaleFragment: Fragment = ScaleFragment()
+        val transForScale: FragmentManager = this.fragmentManager!!
+
+        transForScale.commit {
+            replace(R.id.fragments, scaleFragment)
+            setReorderingAllowed(true)
+            addToBackStack("name") // name can be null
+        }
+    }
+
+    private fun goToFilters() {
+        val filtersFragment: Fragment = FiltersFragment()
+        val transForScale: FragmentManager = this.fragmentManager!!
+
+        transForScale.commit {
+            replace(R.id.fragments, filtersFragment)
             setReorderingAllowed(true)
             addToBackStack("name") // name can be null
         }

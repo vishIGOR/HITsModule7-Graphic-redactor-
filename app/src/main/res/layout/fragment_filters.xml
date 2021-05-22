@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/choice_of_algori_page">
@@ -31,5 +31,65 @@
             app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintVertical_bias="1.0"
             app:layout_constraintTop_toBottomOf="@+id/topOfTheFiltersPage"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_filters"
+            android:id="@+id/negative"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintEnd_toStartOf="@+id/pix" app:layout_constraintHorizontal_bias="0.661"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_filters"
+            android:id="@+id/pix"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintEnd_toStartOf="@+id/colors" app:layout_constraintHorizontal_bias="0.856"/>
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_filters"
+            android:id="@+id/colors"
+            app:layout_constraintEnd_toStartOf="@+id/blur"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintTop_toTopOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintHorizontal_bias="0.921"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomOfFiltersPage"
+    />
+
+    <ImageButton
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_filters"
+            android:id="@+id/blur"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintHorizontal_bias="0.892" app:layout_constraintTop_toTopOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cancel"
+            android:id="@+id/returnToSecondPageButtonFilters"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheFiltersPage"
+            app:layout_constraintTop_toTopOf="@+id/topOfTheFiltersPage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"/>
+
+    <TextView
+            android:text="@string/filters"
+            android:textAppearance="@style/filters"
+            android:layout_width="349dp"
+            android:layout_height="403dp" android:id="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/topOfTheFiltersPage"
+            app:layout_constraintBottom_toTopOf="@+id/bottomOfFiltersPage"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.772"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

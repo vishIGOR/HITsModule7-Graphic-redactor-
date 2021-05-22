@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/choice_of_algori_page">
     <View
             android:id="@+id/topOfTheCubePage"
-            android:layout_width="411dp"
+            android:layout_width="match_parent"
             android:layout_height="102dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/select_image_rectangle"
             app:layout_constraintTop_toTopOf="parent"
@@ -20,9 +20,9 @@
             app:layout_constraintVertical_bias="0.0"/>
     <View
             android:id="@+id/bottomOfCubePage"
-            android:layout_width="418dp"
+            android:layout_width="match_parent"
             android:layout_height="116dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/rectangle_for_third_page"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,15 +33,15 @@
             app:layout_constraintTop_toBottomOf="@+id/topOfTheCubePage"/>
     <EditText
             android:text=""
-            android:layout_width="89dp"
-            android:layout_height="47dp" android:id="@+id/radius"
+            android:layout_width="95dp"
+            android:layout_height="46dp" android:id="@+id/radius"
             android:inputType="numberSigned"
             android:ems="8"
             app:layout_constraintTop_toTopOf="@+id/bottomOfCubePage"
             app:layout_constraintBottom_toBottomOf="@+id/bottomOfCubePage"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.144" app:layout_constraintStart_toEndOf="@+id/effect"
-            app:layout_constraintHorizontal_bias="0.05"/>
+            app:layout_constraintVertical_bias="0.142" app:layout_constraintStart_toEndOf="@+id/effect"
+            app:layout_constraintHorizontal_bias="0.179"/>
     <EditText
             android:text=""
             android:layout_width="95dp"
@@ -54,14 +54,14 @@
             app:layout_constraintHorizontal_bias="0.153" app:layout_constraintVertical_bias="0.142"/>
     <EditText
             android:text=""
-            android:layout_width="93dp"
+            android:layout_width="95dp"
             android:layout_height="46dp" android:id="@+id/threshold"
             android:inputType="numberSigned"
             android:ems="8"
             app:layout_constraintTop_toTopOf="@+id/bottomOfCubePage"
             app:layout_constraintBottom_toBottomOf="@+id/bottomOfCubePage"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.152" app:layout_constraintVertical_bias="0.811"/>
+            app:layout_constraintHorizontal_bias="0.15" app:layout_constraintVertical_bias="0.9"/>
     <ImageView
             android:src="@android:drawable/screen_background_light_transparent"
             android:layout_width="370dp"
@@ -72,14 +72,37 @@
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_ok"
+            app:srcCompat="@drawable/ic_ok_for_algos"
             android:id="@+id/doingSomethingWithCube"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="@+id/bottomOfCubePage"
             app:layout_constraintStart_toStartOf="@+id/bottomOfCubePage"
             app:layout_constraintTop_toTopOf="@+id/bottomOfCubePage"
             app:layout_constraintBottom_toBottomOf="@+id/bottomOfCubePage"
-            app:layout_constraintHorizontal_bias="0.765" app:layout_constraintVertical_bias="0.66"
-            tools:layout_editor_absoluteY="644dp" tools:layout_editor_absoluteX="273dp"/>
+            app:layout_constraintHorizontal_bias="0.893" app:layout_constraintVertical_bias="0.482"
+    />
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cancel"
+            android:id="@+id/returnToSecondPageButtonCube"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintTop_toTopOf="@+id/topOfTheCubePage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_ok"
+            android:id="@+id/endWorkingWithImageButtonCube"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheCubePage"
+            app:layout_constraintStart_toStartOf="@+id/topOfTheCubePage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.903"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

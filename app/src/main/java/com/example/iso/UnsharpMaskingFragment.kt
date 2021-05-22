@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import kotlinx.android.synthetic.main.fragment_unsharp_masking.*
 import kotlin.math.*
 
@@ -25,45 +27,69 @@ class UnsharpMaskingFragment : Fragment(R.layout.fragment_unsharp_masking) {
     var radius: EditText? = null
     var threshold: EditText? = null
     var startMaskingButton: ImageView? = null
+    var saveMaskingButton: ImageView? = null
+    var returnButton: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_unsharp_masking, container, false)
+        photoPlace = rootView.findViewById(R.id.placeForImageMasking)
+        val photo = (context as ThirdPageActivity).setPicture
+        photoPlace.setImageBitmap(photo)
+
         effect = rootView.findViewById(R.id.effect)
         radius = rootView.findViewById(R.id.radius)
         threshold = rootView.findViewById(R.id.threshold)
+
         startMaskingButton = rootView.findViewById(R.id.startMaskingButton)
-        photoPlace = rootView.findViewById(R.id.placeForImageMasking)
-        val photo = (context as ThirdPageActivity).fromUriToBitmap()
-        photoPlace.setImageBitmap(photo)
         startMaskingButton?.setOnClickListener {
-            if(effect == null || radius == null || threshold == null){
+            if (effect == null || radius == null || threshold == null) {
                 Toast.makeText(this.context, "Некорректный ввод данных", 5).show()
-            }
-            else{
-                if(effect?.text.toString().toInt()<50 || effect?.text.toString().toInt()>500){
+            } else {
+                if (effect?.text.toString().toInt() < 50 || effect?.text.toString().toInt() > 500) {
                     Toast.makeText(this.context, "Значение эффекта должно быть в диапазоне от 50 до 100%", 5).show()
-                }
-                else{
-                    if(radius?.text.toString().toInt()<50 || radius?.text.toString().toInt()>500){
+                } else {
+                    if (radius?.text.toString().toInt() < 50 || radius?.text.toString().toInt() > 500) {
                         Toast.makeText(this.context, "Значение радиуса должно быть в диапазоне от 50 до 100%", 5).show()
-                    }
-                    else{
-                        if(threshold?.text.toString().toInt()<5 || threshold?.text.toString().toInt()>50){
-                            Toast.makeText(this.context, "Значение порога должно быть в диапазоне от 5 до 50 пикселей", 5).show()
-                        }
-                        else{
-                            unsharpMasking()
+                    } else {
+                        if (threshold?.text.toString().toInt() < 5 || threshold?.text.toString().toInt() > 50) {
+                            Toast.makeText(
+                                this.context,
+                                "Значение порога должно быть в диапазоне от 5 до 50 пикселей",
+                                5
+                            ).show()
+                        } else {
+                            lateinit var maskPhoto: Bitmap
+                            maskPhoto = unsharpMasking()
+                            (context as ThirdPageActivity).setPicture = maskPhoto
                         }
                     }
                 }
-            }}
+            }
+        }
+
+        saveMaskingButton = rootView.findViewById(R.id.endWorkingWithImageButtonMask)
+        saveMaskingButton?.setOnClickListener() {
+            returnToMainMenu()
+        }
+
         return rootView
     }
 
-    private fun unsharpMasking() {
+    private fun returnToMainMenu() {
+        val returnFragment: Fragment = MainMenuFragment()
+        val transForMenu: FragmentManager = this.fragmentManager!!
+
+        transForMenu.commit {
+            add(R.id.fragments, returnFragment)
+            setReorderingAllowed(true)
+            addToBackStack("name") // name can be null
+        }
+    }
+
+    private fun unsharpMasking(): Bitmap {
 
         var effectValue = effect?.text.toString().toInt()
         var radiusValue = radius?.text.toString().toInt()
@@ -122,7 +148,6 @@ class UnsharpMaskingFragment : Fragment(R.layout.fragment_unsharp_masking) {
         }
 
 
-
         val image = (placeForImageMasking?.drawable as BitmapDrawable).bitmap
 
         val imageWidth = image.width
@@ -141,7 +166,7 @@ class UnsharpMaskingFragment : Fragment(R.layout.fragment_unsharp_masking) {
         var pixelX = 0
         var pixelY = 0
 
-        var sigma = radiusValue/100.0
+        var sigma = radiusValue / 100.0
         var doubleSigma: Int = 2 * (sigma.roundToInt())
         val coefficients = Array(2 * doubleSigma + 1) { Array(2 * doubleSigma + 1) { 0.0 } }
         for (i in -1 * doubleSigma..doubleSigma) {
@@ -159,39 +184,39 @@ class UnsharpMaskingFragment : Fragment(R.layout.fragment_unsharp_masking) {
                 for (j in -1 * doubleSigma..doubleSigma) {
 
                     coef = coefficients[i + doubleSigma][j + doubleSigma]
-                    if (pixelX+i >=imageWidth || pixelX+i<0){
-                        if(pixelY+j>=imageHeight || pixelY+j<0){
+                    if (pixelX + i >= imageWidth || pixelX + i < 0) {
+                        if (pixelY + j >= imageHeight || pixelY + j < 0) {
                             currentPixel.addColor(
                                 coef,
                                 oldPixels[returnNumberFromCoordinates(
                                     imageWidth,
-                                    pixelX + i-doubleSigma*(sign(i.toDouble()).toInt()),
-                                    pixelY + j-doubleSigma*(sign(j.toDouble()).toInt())
+                                    pixelX + i - doubleSigma * (sign(i.toDouble()).toInt()),
+                                    pixelY + j - doubleSigma * (sign(j.toDouble()).toInt())
                                 )]
                             )
-                        }else{
+                        } else {
 
                             currentPixel.addColor(
                                 coef,
                                 oldPixels[returnNumberFromCoordinates(
                                     imageWidth,
-                                    pixelX + i-doubleSigma*(sign(i.toDouble()).toInt()),
+                                    pixelX + i - doubleSigma * (sign(i.toDouble()).toInt()),
                                     pixelY + j
                                 )]
                             )
                         }
                         continue
                     }
-                    if(pixelY+j>=imageHeight || pixelY+j<0){
+                    if (pixelY + j >= imageHeight || pixelY + j < 0) {
                         currentPixel.addColor(
                             coef,
                             oldPixels[returnNumberFromCoordinates(
                                 imageWidth,
                                 pixelX,
-                                pixelY + j-doubleSigma*(sign(j.toDouble()).toInt())
+                                pixelY + j - doubleSigma * (sign(j.toDouble()).toInt())
                             )]
                         )
-                    }else{
+                    } else {
                         currentPixel.addColor(
                             coef,
                             oldPixels[returnNumberFromCoordinates(
@@ -217,5 +242,7 @@ class UnsharpMaskingFragment : Fragment(R.layout.fragment_unsharp_masking) {
 
         val draw: Drawable = BitmapDrawable(resources, newImage)
         placeForImageMasking!!.setImageDrawable(draw)
+
+        return newImage
     }
 }

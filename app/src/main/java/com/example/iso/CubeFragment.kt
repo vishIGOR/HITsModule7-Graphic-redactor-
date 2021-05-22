@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import kotlinx.android.synthetic.main.fragment_cube.*
 import kotlin.math.*
 
@@ -22,6 +24,7 @@ class CubeFragment : Fragment(R.layout.fragment_cube) {
     var radius: EditText? = null
     var threshold: EditText? = null
     var doingSomethingWithCube: ImageView? = null
+    var returnButton: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,28 +39,43 @@ class CubeFragment : Fragment(R.layout.fragment_cube) {
         cubePlace = rootView.findViewById(R.id.placeForCube)
 
         doingSomethingWithCube?.setOnClickListener {
-            if(effect == null || radius == null || threshold == null){
+            if (effect == null || radius == null || threshold == null) {
                 Toast.makeText(this.context, "Некорректный ввод данных", 5).show()
-            }
-            else{
-                if(effect?.text.toString().toInt()<50 || effect?.text.toString().toInt()>500){
+            } else {
+                if (effect?.text.toString().toInt() < 50 || effect?.text.toString().toInt() > 500) {
                     Toast.makeText(this.context, "Значение эффекта должно быть в диапазоне от 50 до 100%", 5).show()
-                }
-                else{
-                    if(radius?.text.toString().toInt()<50 || radius?.text.toString().toInt()>500){
+                } else {
+                    if (radius?.text.toString().toInt() < 50 || radius?.text.toString().toInt() > 500) {
                         Toast.makeText(this.context, "Значение радиуса должно быть в диапазоне от 50 до 100%", 5).show()
-                    }
-                    else{
-                        if(threshold?.text.toString().toInt()<5 || threshold?.text.toString().toInt()>50){
-                            Toast.makeText(this.context, "Значение порога должно быть в диапазоне от 5 до 50 пикселей", 5).show()
-                        }
-                        else{
+                    } else {
+                        if (threshold?.text.toString().toInt() < 5 || threshold?.text.toString().toInt() > 50) {
+                            Toast.makeText(
+                                this.context,
+                                "Значение порога должно быть в диапазоне от 5 до 50 пикселей",
+                                5
+                            ).show()
+                        } else {
                             cube()
                         }
                     }
                 }
-            }}
+            }
+        }
+
+        returnButton = rootView.findViewById(R.id.returnToSecondPageButtonCube)
+        returnButton?.setOnClickListener{
+            returnToMainMenu()
+        }
         return rootView
+    }
+
+    private fun returnToMainMenu() {
+        val returnFragment: Fragment = MainMenuFragment()
+        val transForMenu: FragmentManager = this.fragmentManager!!
+
+        transForMenu.commit {
+            replace(R.id.fragments, returnFragment)
+        }
     }
 
     private fun cube() {

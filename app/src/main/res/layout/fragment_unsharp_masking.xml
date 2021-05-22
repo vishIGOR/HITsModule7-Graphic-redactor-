@@ -31,7 +31,7 @@
             app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintVertical_bias="1.0" app:layout_constraintTop_toBottomOf="@+id/topOfTheMaskingPage"/>
     <EditText
-            android:text=""
+            android:text="@string/radius"
             android:layout_width="89dp"
             android:layout_height="47dp" android:id="@+id/radius"
             android:inputType="numberSigned"
@@ -39,9 +39,9 @@
             app:layout_constraintTop_toTopOf="@+id/bottomOfMaskingPage"
             app:layout_constraintBottom_toBottomOf="@+id/bottomOfMaskingPage"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.468" app:layout_constraintVertical_bias="0.13"/>
+            app:layout_constraintHorizontal_bias="0.543" app:layout_constraintVertical_bias="0.13"/>
     <EditText
-            android:text=""
+            android:text="@string/effect"
             android:layout_width="95dp"
             android:layout_height="46dp" android:id="@+id/effect"
             android:inputType="numberSigned"
@@ -51,7 +51,7 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.153" app:layout_constraintVertical_bias="0.142"/>
     <EditText
-            android:text=""
+            android:text="@string/threshold"
             android:layout_width="93dp"
             android:layout_height="46dp" android:id="@+id/threshold"
             android:inputType="numberSigned"
@@ -62,22 +62,46 @@
             app:layout_constraintHorizontal_bias="0.152" app:layout_constraintVertical_bias="0.811"/>
     <ImageView
             android:src="@android:drawable/screen_background_light_transparent"
-            android:layout_width="370dp"
-            android:layout_height="456dp" android:id="@+id/placeForImageMasking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/placeForImageMasking"
             app:layout_constraintTop_toBottomOf="@+id/topOfTheMaskingPage"
             app:layout_constraintBottom_toTopOf="@+id/bottomOfMaskingPage"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_ok"
+            app:srcCompat="@drawable/ic_ok_for_algos"
             android:id="@+id/startMaskingButton"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="@+id/bottomOfMaskingPage"
             app:layout_constraintStart_toStartOf="@+id/bottomOfMaskingPage"
             app:layout_constraintTop_toTopOf="@+id/bottomOfMaskingPage"
             app:layout_constraintBottom_toBottomOf="@+id/bottomOfMaskingPage"
-            app:layout_constraintHorizontal_bias="0.765" app:layout_constraintVertical_bias="0.66"
-            tools:layout_editor_absoluteY="644dp" tools:layout_editor_absoluteX="273dp"/>
+            app:layout_constraintHorizontal_bias="0.84" app:layout_constraintVertical_bias="0.517"
+    />
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cancel"
+            android:id="@+id/returnToSecondPageButtonMask"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheMaskingPage"
+            app:layout_constraintTop_toTopOf="@+id/topOfTheMaskingPage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"/>
+
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_ok"
+            android:id="@+id/endWorkingWithImageButtonMask"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topOfTheMaskingPage"
+            app:layout_constraintStart_toStartOf="@+id/topOfTheMaskingPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.903"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

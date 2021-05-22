@@ -7,6 +7,13 @@
         android:fitsSystemWindows="true"
         android:id="@+id/constL"
         android:background="@drawable/choice_of_algori_page">
+    <ImageView
+            android:layout_width="363dp"
+            android:id="@+id/placeForPhoto"
+            android:layout_height="485dp" app:srcCompat="@android:drawable/divider_horizontal_bright"
+            app:layout_constraintEnd_toEndOf="@+id/fragments"
+            app:layout_constraintStart_toStartOf="@+id/fragments"
+            app:layout_constraintBottom_toBottomOf="@+id/fragments" app:layout_constraintTop_toTopOf="@+id/fragments"/>
 
     <FrameLayout
             android:layout_width="match_parent"
@@ -15,5 +22,4 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent">
     </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

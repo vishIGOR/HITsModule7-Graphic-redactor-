@@ -4,6 +4,10 @@
 
         I S O P H O T O
     </string>
+    <string name="iso">
+
+        ISOPHOTO
+    </string>
     <string name="dt">
 
         DT
@@ -44,6 +48,26 @@
 
         rotate
     </string>
+    <string name="filters">
+        \n
+        если вы хотите перейти на тёмную сторону силы,\n
+        нажмите первую таинственную палитру.\n
+        \n
+        если вы соскучились по майнкрафту,\n
+        нажмите вторую таинственную палитру.\n
+        \n
+        если в вашей жизни не хватает цвета,\n
+        нажмите третью таинственную палитру.\n
+        \n
+        а если не хватает настроения "о, вот он мир без очков",\n
+        нажмите четвёртую таинственную палитру.\n
+    </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="red">red</string>
+    <string name="radius">радиус</string>
+    <string name="effect">эффект</string>
+    <string name="threshold">порог</string>
+    <string name="green">green</string>
+    <string name="blue">blue</string>
 </resources>
